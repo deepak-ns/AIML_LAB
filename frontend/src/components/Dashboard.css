@@ -1,0 +1,125 @@
+.dashboard {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.selectors {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.operator-selector,
+.machine-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.operator-selector label,
+.machine-selector label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.operator-selector select,
+.machine-selector select {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.operator-selector select:hover,
+.machine-selector select:hover {
+  border-color: #764ba2;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.operator-selector select:focus,
+.machine-selector select:focus {
+  outline: none;
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dashboard-loading,
+.dashboard-error,
+.dashboard-empty {
+  background: white;
+  border-radius: 15px;
+  padding: 60px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-loading .spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dashboard-error button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.dashboard-error button:hover {
+  background: #764ba2;
+}
+
+.dashboard-empty p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.operator-info {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.operator-info h2 {
+  color: #667eea;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.machine-section {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.machine-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
