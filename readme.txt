@@ -1,0 +1,1 @@
+requirements.txt in the backend folder
