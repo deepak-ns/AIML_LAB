@@ -6,8 +6,9 @@ from datetime import datetime, timedelta # Added timedelta
 # Note: psycopg2, numpy, and python-dateutil (via datetime) must be installed.
 import os
 from dotenv import load_dotenv
-# --- CONFIGURATION (Must match pipeline.py and DB setup) ---
-load_dotenv()
+
+load_dotenv(dotenv_path="backend/.env")
+
 DB_PARAMS = {
     "host": os.getenv("DB_HOST"),
     "database": os.getenv("DB_DATABASE"),
