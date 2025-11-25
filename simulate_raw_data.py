@@ -4,13 +4,15 @@ import psycopg2
 import numpy as np
 from datetime import datetime, timedelta # Added timedelta
 # Note: psycopg2, numpy, and python-dateutil (via datetime) must be installed.
-
+import os
+from dotenv import load_dotenv
 # --- CONFIGURATION (Must match pipeline.py and DB setup) ---
+load_dotenv()
 DB_PARAMS = {
-    "host": "localhost",
-    "database": "hydraulic_monitoring",
-    "user": "postgres",
-    "password": "postgres04"
+    "host": os.getenv("DB_HOST"),
+    "database": os.getenv("DB_DATABASE"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD")
 }
 
 SENSORS = ["ps1", "vs1", "se", "ce", "cp", "ts1", "fs1", "eps1"]
