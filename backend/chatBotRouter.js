@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-require('dotenv').config();
+require("dotenv").config();
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
@@ -11,19 +11,20 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // Replace with your actual k
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash", 
-  systemInstruction: "You are an expert in hydraulic systems. You answer questions on components and maintenance. Speak concisely and do not use any markdown formatting like bold, italics, or lists.", 
+  model: "gemini-2.5-flash",
+  systemInstruction:
+    "You are an expert in hydraulic systems. You answer questions on components and maintenance. Speak concisely and do not use any markdown formatting like bold, italics, or lists. Dont answer any question that is not related to hydraulic systems",
 });
 
 router.post("/", async (req, res) => {
   console.log("📨 Chatbot request received");
   console.log("Body:", req.body);
-  
+
   try {
     if (!req.body || !req.body.message) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: "Message is required",
-        receivedBody: req.body
+        receivedBody: req.body,
       });
     }
 
@@ -40,11 +41,10 @@ router.post("/", async (req, res) => {
 
     console.log("✅ Success! Reply:", reply.substring(0, 100) + "...");
     res.json({ reply });
-
   } catch (error) {
     console.error("🔥 Error:", error.message);
-    res.status(500).json({ 
-      error: error?.message || "Failed to process request"
+    res.status(500).json({
+      error: error?.message || "Failed to process request",
     });
   }
 });
